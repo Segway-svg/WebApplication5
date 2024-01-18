@@ -11,6 +11,7 @@ using OrderMappers;
 using OrderModelsDb;
 using OrderData;
 using System.ComponentModel;
+using System.Net;
 
 namespace OrderBusiness
 {
@@ -26,7 +27,12 @@ namespace OrderBusiness
 
             if (!validationResult.IsValid)
             {
-                new ArgumentException("Ошибка во входных данных");
+                return new CreateOrderResponse()
+                {
+                    Id = null,
+                    IsSuccess = false,
+                    Errors = validationResult.Errors.Select(validationFailure => validationFailure.ErrorMessage).ToList()
+                };
             }
 
             DbOrderMapper mapper = new DbOrderMapper();

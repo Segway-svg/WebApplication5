@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrderData;
+using OrderModelsDb;
 using OrderModelsDto;
 
 namespace OrderBusiness.Controllers
@@ -15,12 +17,14 @@ namespace OrderBusiness.Controllers
             return command.Execute(request);
         }
 
-        // GetAll
-        //[HttpGet("Get")]
-        //public int GetOrders()
-        //{
-        //    return 5;
-        //}
+        [HttpGet("Get")]
+        public GetOrderResponse GetOrders()
+        {
+            GetOrderCommand command = new GetOrderCommand();
+            return command.Execute();
+            //OrderRepository orderRepository = new OrderRepository();
+            //return orderRepository.GetOrders();
+        }
 
 
         // GetByID

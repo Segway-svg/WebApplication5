@@ -8,9 +8,10 @@ namespace OrderDataProvider
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // add to appsettings.json
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=master;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=NewOrderDB;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=NewOrdersDb;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
         }
 
-        public DbSet<DbOrder> LSO { get; set; }
+        public DbSet<DbOrder> Orders { get; set; }
     }
 }
