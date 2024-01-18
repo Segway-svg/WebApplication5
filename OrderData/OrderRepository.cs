@@ -17,7 +17,7 @@ namespace OrderData
         {
             using (OrderDbContext context = new OrderDbContext())
             {
-                return context.LSO.ToList();
+                return context.Orders.ToList();
             }    
         }
 
@@ -25,7 +25,7 @@ namespace OrderData
         {
             using (OrderDbContext context = new OrderDbContext())
             {
-                context.LSO.Add(order);
+                context.Orders.Add(order);
                 context.SaveChanges();
                 return order.Id;
             }
